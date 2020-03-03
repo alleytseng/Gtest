@@ -20,3 +20,38 @@ hello[0;32m[==========] [mRunning 1 test from 1 test suite.
 [0;32m[  PASSED  ] [m1 test.
 
 annie@annie-PC /usr/home/annie/UnitTest_gtest
+-----------------------------------------
+加上gmock之後要多連到-lgmock
+annie@annie-PC /usr/home/annie/UnitTest_gtest
+$ g++ -I/usr/local/include -L/usr/local/lib main.cpp -lgtest -lgmock -Ipthread
+main.cpp: In function 'int main(int, char**)':
+main.cpp:73:17: warning: ignoring return value of 'int RUN_ALL_TESTS()', declare
+d with attribute warn_unused_result [-Wunused-result]
+  RUN_ALL_TESTS();
+                 ^
+
+annie@annie-PC /usr/home/annie/UnitTest_gtest
+$ ./a.exe
+[0;32m[==========] [mRunning 1 test from 1 test suite.
+[0;32m[----------] [mGlobal test environment set-up.
+[0;32m[----------] [m1 test from MyDBTest
+[0;32m[ RUN      ] [mMyDBTest.LoginTest
+
+GMOCK WARNING:
+Uninteresting mock function call - taking default action specified at:
+main.cpp:65:
+    Function call: login2("Terminator", "I'm Back")
+          Returns: true
+NOTE: You can safely ignore the above warning unless this call should not happen
+.  Do not suppress it by blindly adding an EXPECT_CALL() if you don't mean to en
+force the call.  See https://github.com/google/googletest/blob/master/googlemock
+/docs/cook_book.md#knowing-when-to-expect for details.
+[0;32m[       OK ] [mMyDBTest.LoginTest (1 ms)
+[0;32m[----------] [m1 test from MyDBTest (1 ms total)
+
+[0;32m[----------] [mGlobal test environment tear-down
+[0;32m[==========] [m1 test from 1 test suite ran. (3 ms total)
+[0;32m[  PASSED  ] [m1 test.
+
+annie@annie-PC /usr/home/annie/UnitTest_gtest
+$
