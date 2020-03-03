@@ -1,0 +1,22 @@
+annie@annie-PC /usr/home/annie/UnitTest_gtest
+$ g++ -I/usr/local/include -L/usr/local/lib main.cpp -lgtest -Ipthread
+main.cpp: In function 'int main(int, char**)':
+main.cpp:11:16: warning: ignoring return value of 'int RUN_ALL_TESTS()', declar
+d with attribute warn_unused_result [-Wunused-result]
+ RUN_ALL_TESTS();
+                ^(這些只是warning，不用管他)
+
+annie@annie-PC /usr/home/annie/UnitTest_gtest
+$ ./a.exe
+hello[0;32m[==========] [mRunning 1 test from 1 test suite.
+[0;32m[----------] [mGlobal test environment set-up.
+[0;32m[----------] [m1 test from testCase
+[0;32m[ RUN      ] [mtestCase.test0
+[0;32m[       OK ] [mtestCase.test0 (0 ms)
+[0;32m[----------] [m1 test from testCase (2 ms total)
+
+[0;32m[----------] [mGlobal test environment tear-down
+[0;32m[==========] [m1 test from 1 test suite ran. (8 ms total)
+[0;32m[  PASSED  ] [m1 test.
+
+annie@annie-PC /usr/home/annie/UnitTest_gtest
