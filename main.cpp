@@ -31,6 +31,18 @@ public:
 	MyDatabase(DataBaseConnect & _dbC):dbC(_dbC){}
 	int Init(string username, string password)
 	{
+		if(dbC.login(username, password) != true){
+			cout<<"DB FAILURE"<<endl;
+			return -1;
+		}
+		else{
+			cout<<"DB SUCCESS"<<endl;
+			//do init step...
+			return 1;
+		}
+	}
+	/*int Init(string username, string password)
+	{
 		int rvalue=rand()%2;
 		if(rvalue == 0)
 		{
@@ -46,6 +58,7 @@ public:
 			else
 			{
 				cout<<"DB SUCCESS"<<endl;
+				//do init things
 				return 1;
 			}
 		}
@@ -54,19 +67,22 @@ public:
 			return dbC.login2(username, password);
 		}
 
-	}
+	}*/
 };
 TEST(MyDBTest, LoginTest)
 {
 	MockDB mdb;
 	MyDatabase db(mdb);
-	//EXPECT_CALL(mdb, login(_, _)).Times(1).WillOnce(Return(true));
-	ON_CALL(mdb, login(_, _)).WillByDefault(Return(true));
-	ON_CALL(mdb, login2(_, _)).WillByDefault(Return(true));
+	EXPECT_CALL(mdb, login(_, _)).
+	Times(1).
+	WillOnce(Return(true));
+	//ON_CALL(mdb, login(_, _)).WillByDefault(Return(true));
+	//ON_CALL(mdb, login2(_, _)).WillByDefault(Return(true));
 	//int retValue =1;// db.Init("Terminator", "I'm Back");
-	int retValue = db.Init("Terminator", "I'm Back");
+	int retValue = db.Init("n0", "p0");
 	EXPECT_EQ(retValue, 1);
 }
+
 int main(int argc,char **argv)
 {
 	testing::InitGoogleTest(&argc,argv);
